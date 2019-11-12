@@ -10,6 +10,7 @@
 \alias{theme_orange}
 \alias{theme_green}
 \alias{theme_article}
+\alias{theme_kable}
 \alias{theme_mondrian}
 \title{Theme a huxtable}
 \usage{
@@ -29,6 +30,8 @@ theme_orange(ht, header_row = TRUE, header_col = TRUE)
 theme_green(ht, header_row = TRUE, header_col = TRUE)
 
 theme_article(ht, header_row = TRUE, header_col = TRUE)
+
+theme_kable(ht, header_row = TRUE)
 
 theme_mondrian(ht, prop_colored = 0.1, font = "Arial")
 }
@@ -63,6 +66,9 @@ These functions quickly set default styles for a huxtable.
 \code{theme_article} is similar to the style of many scientific journals.
 It sets horizontal lines above and below the table.
 
+\code{theme_kable} replicates the default style of \code{knitr::kable()}, with thin gray
+horizontal lines in between rows and a thick gray line under the header.
+
 \code{theme_grey}, \code{theme_blue}, \code{theme_orange} and \code{theme_green} use white borders and subtle
 horizontal stripes.
 
@@ -75,6 +81,7 @@ theme_striped(jams)
 theme_plain(jams)
 theme_basic(jams)
 theme_article(jams)
+theme_kable(jams)
 theme_mondrian(jams)
 theme_grey(jams)
 theme_blue(jams)
@@ -86,6 +93,7 @@ theme_green(jams)
           theme_plain(jams),
           theme_basic(jams),
           theme_article(jams),
+          theme_kable(jams),
           theme_mondrian(jams),
           theme_grey(jams),
           theme_blue(jams),

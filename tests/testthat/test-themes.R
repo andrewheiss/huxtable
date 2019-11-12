@@ -6,6 +6,7 @@ test_that("Themes work", {
   ht <- huxtable(a = 1:5, b = 1:5)
   expect_error(theme_basic(ht), regexp = NA)
   expect_error(theme_article(ht), regexp = NA)
+  expect_error(theme_kable(ht), regexp = NA)
   expect_error(theme_striped(ht), regexp = NA)
   expect_error(theme_plain(ht), regexp = NA)
   expect_error(theme_mondrian(ht), regexp = NA)
@@ -22,6 +23,7 @@ test_that("Themes work with options", {
   expect_error(theme_striped(ht, stripe = "purple", header_row = FALSE, header_col = FALSE),
         regexp = NA)
   expect_error(theme_article(ht, header_row = FALSE, header_col = FALSE), regexp = NA)
+  expect_error(theme_kable(ht, header_row = FALSE), regexp = NA)
   expect_error(theme_mondrian(ht, prop_colored = 0.5), regexp = NA)
   expect_error(theme_mondrian(ht, prop_colored = 0), regexp = NA)
   expect_silent(theme_grey(ht, header_row = FALSE, header_col = TRUE))

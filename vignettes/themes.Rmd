@@ -41,6 +41,11 @@ theme_article(jams)
 
 
 ```{r}
+theme_kable(jams)
+```
+
+
+```{r}
 theme_grey(jams)
 ```
 

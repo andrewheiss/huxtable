@@ -13,6 +13,9 @@
 #' `theme_article` is similar to the style of many scientific journals.
 #'   It sets horizontal lines above and below the table.
 #'
+#' `theme_kable` replicates the default style of `knitr::kable()`, with thin gray
+#'   horizontal lines in between rows and a thick gray line under the header.
+#'
 #'  `theme_grey`, `theme_blue`, `theme_orange` and `theme_green` use white borders and subtle
 #'    horizontal stripes.
 #'
@@ -32,6 +35,7 @@
 #' theme_plain(jams)
 #' theme_basic(jams)
 #' theme_article(jams)
+#' theme_kable(jams)
 #' theme_mondrian(jams)
 #' theme_grey(jams)
 #' theme_blue(jams)
@@ -43,6 +47,7 @@
 #'           theme_plain(jams),
 #'           theme_basic(jams),
 #'           theme_article(jams),
+#'           theme_kable(jams),
 #'           theme_mondrian(jams),
 #'           theme_grey(jams),
 #'           theme_blue(jams),
@@ -184,6 +189,28 @@ theme_article <- function (ht, header_row = TRUE, header_col = TRUE) {
     bold(ht)[1, ] <- TRUE
   }
   if (header_col) bold(ht)[, 1] <- TRUE
+
+  ht
+}
+
+
+#' @export
+#' @rdname themes
+theme_kable <- function(ht, header_row = TRUE) {
+  assert_that(is.flag(header_row))
+
+  # All rows get a thin gray border on the bottom
+  ht <- set_bottom_border(ht, everywhere, everywhere, 1)
+  ht <- set_bottom_border_color(ht, everywhere, everywhere, "#DDDDDD")
+
+  if (header_row) {
+    # Header row is bold with a thicker bottom border
+    ht <- set_bold(ht, 1, everywhere, TRUE)
+    ht <- set_bottom_border(ht, 1, everywhere, 2)
+  }
+
+  # No bottom border on last row
+  ht <- set_bottom_border(ht, final(1), everywhere, 0)
 
   ht
 }
